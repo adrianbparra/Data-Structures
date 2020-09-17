@@ -1,3 +1,10 @@
+import sys  
+sys.path.append("~\Data_Structures\Data-Structures\singly_linked_list")
+print(sys.path)
+from singly_linked_list import Node
+node = Node(4)
+print(node.get_value())
+
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
@@ -16,13 +23,28 @@ Stretch: What if you could only use instances of your Stack class to implement t
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = list()
     
     def __len__(self):
-        pass
+        return self.size
 
     def enqueue(self, value):
-        pass
+        # add value to list
+        self.storage.append(value)
+        # update size
+        self.size += 1
 
     def dequeue(self):
+        try:
+            # remove first value
+            value =  self.storage.pop(0)
+        except IndexError:
+            return None
+
+        # update size 
+        self.size -= 1
+        return value
         pass
+
+
+
