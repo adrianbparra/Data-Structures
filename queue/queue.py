@@ -1,9 +1,6 @@
 import sys  
-sys.path.append("~\Data_Structures\Data-Structures\singly_linked_list")
-print(sys.path)
-from singly_linked_list import Node
-node = Node(4)
-print(node.get_value())
+sys.path.append("C:\\Users\PC1\Documents\Lambda_School\Data_Structures\Data-Structures\singly_linked_list")
+from singly_linked_list import LinkedList,Node
 
 """
 A queue is a data structure whose primary purpose is to store and
@@ -23,28 +20,27 @@ Stretch: What if you could only use instances of your Stack class to implement t
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = list()
+        # self.storage = list()
+        self.storage = LinkedList()
     
     def __len__(self):
         return self.size
 
     def enqueue(self, value):
         # add value to list
-        self.storage.append(value)
+        # self.storage.append(value)
+        self.storage.add_to_tail(value)
         # update size
         self.size += 1
 
     def dequeue(self):
-        try:
+        if self.size != 0:
+
+            # update size 
+            self.size -= 1
             # remove first value
-            value =  self.storage.pop(0)
-        except IndexError:
-            return None
-
-        # update size 
-        self.size -= 1
-        return value
-        pass
-
-
+            # return self.storage.pop(0)
+            return self.storage.remove_head()
+        
+        return None
 
