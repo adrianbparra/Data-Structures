@@ -139,13 +139,11 @@ class LinkedList:
         
 
 
-list = LinkedList()
-list.add_to_head(12)
-list.add_to_tail(21)
-list.add_to_tail(85)
-list.add_to_tail(35)
-list.add_to_tail(25)
-list.add_to_tail(22)
+# list = LinkedList()
+
+# list.add_to_tail(100)
+# print(list.remove_tail())
+
 
 
 

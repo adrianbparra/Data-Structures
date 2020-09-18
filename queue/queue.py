@@ -1,6 +1,9 @@
 import sys  
 sys.path.append("C:\\Users\PC1\Documents\Lambda_School\Data_Structures\Data-Structures\singly_linked_list")
+sys.path.append("C:\\Users\PC1\Documents\Lambda_School\Data_Structures\Data-Structures\stack")
+
 from singly_linked_list import LinkedList,Node
+from stack import Stack
 
 """
 A queue is a data structure whose primary purpose is to store and
@@ -43,4 +46,5 @@ class Queue:
             return self.storage.remove_head()
         
         return None
+
 
