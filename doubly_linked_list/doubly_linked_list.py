@@ -13,6 +13,17 @@ class ListNode:
             self.prev.next = self.next
         if self.next:
             self.next.prev = self.prev
+
+    # adding to tail
+    def insert_after(self,prev):
+        prev.next = self
+        self.prev = prev
+        
+    # adding to head
+    def insert_before(self,next):
+        next.prev = self
+        self.next = next
+        
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
@@ -42,7 +53,7 @@ class DoublyLinkedList:
             pass
         # add to not empty
         else:
-            # update new node to self.head
+            # update cur self.head to node.next
             node.next = self.head
             # update cur self.head.prev value to node
             self.head.prev = node
@@ -150,6 +161,7 @@ class DoublyLinkedList:
 
         else:
         # many values
+        # has to update position for prev and next only
             node.delete()
             pass    
 
