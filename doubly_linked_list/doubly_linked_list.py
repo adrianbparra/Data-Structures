@@ -82,21 +82,22 @@ class DoublyLinkedList:
     """
     def add_to_tail(self, value):
         # wrap value to list node
-        node = ListNode(value)
-        # check no values
-        if self.tail is None:
-            self.tail = node
-            self.head = node
-        # else
-        else:
-            # update self.tail.next to node
-            self.tail.next = node
-            # update node.prev to self.tail
-            node.prev = self.tail
-            # update new self.tail to node
-            self.tail = node
-            pass
-        self.length += 1
+        # node = ListNode(value)
+        # # check no values
+        # if self.tail is None:
+        #     self.tail = node
+        #     self.head = node
+        # # else
+        # else:
+        #     # update self.tail.next to node
+        #     self.tail.next = node
+        #     # update node.prev to self.tail
+        #     node.prev = self.tail
+        #     # update new self.tail to node
+        #     self.tail = node
+        #     pass
+        # self.length += 1
+        pass
             
     """
     Removes the List's current tail node, making the 
@@ -171,10 +172,15 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
+
+        # check if there is node
+        if self.head == None:
+            return None
+            
         value = 0
         cur_node = self.head
         # start with value as 0 and cur_node as head
-        # loop over lenght
+        # loop over while cur_node is not none
         while cur_node is not None:
         # check if cur_node.value is > value else nothing
             if cur_node.value >= value:
@@ -185,9 +191,9 @@ class DoublyLinkedList:
         return value
 
 
-# list = DoublyLinkedList(node=ListNode(12))
+list = DoublyLinkedList()
 
-
+# print(list.get_max())
 # list.add_to_tail(185)
 # list.add_to_head(22)
 # list.add_to_tail(25)
