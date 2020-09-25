@@ -95,44 +95,141 @@ class BSTNode:
 
     # Part 2 -----------------------
 
+    # Breath First Traversal BFT
+        # finding the shortest path on a map from point to point
+
+    # Depth first Traversal DFT
+        #  finding the exit out of a maze
+
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
         # start going all the left first
-        # trace back to if right
-            # print
-        # else trace backmore
+
+        # check if left
+            # recurse
+        # print
+        # check if right
+            # recurse
+        
         if self.left:
-            self.left.in_order_dft()
+            self.left.in_order_print()
+            
+        print(self.value)
         
         if self.right:
-            self.right.in_order_dft()
-        else:
-            print(self.value)
+            self.right.in_order_print()
+        
         
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        # FIFO
+        # create a queue
+        queue = list()
+        # self is added to queue
+        queue.append(self)
+
+        while queue:
+        # if left
+            if queue[0].left:      
+             # add to queue / print
+                queue.append(queue[0].left)
+        
+        # if right 
+            if queue[0].right:
+            # add to queue / print
+                queue.append(queue[0].right)
+            
+        # remove and print the first item in the list
+            print(queue.pop(0).value)
+
+    # ################# RECURSIVE ###########################
+
+        #Does NOT work
+         
+        # if self.left:
+        #     self.left.bft_print()
+
+        # if self.right:
+        #     self.right.bft_print()
+
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        # LIFO
+        # # create a stack to keep track of nodes
+        stack = list()
+        # add self to stack
+        stack.append(self)
+        # while something still in stack
+        while len(stack) > 0:
+            # remove and print the first value
+            node = stack.pop()
+            print(node.value)
 
-    # Stretch Goals -------------------------
+            # check if value exisits
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+
+# ####################### RECURSIVE ########################
+        # recursive was was that as a node is visited it print
+        # the print is called first as soon as the function is called on the node
+
+        # print(self.value)
+        # if self.left:
+        #     self.left.dft_print()
+        # if self.right:
+        #     self.right.dft_print()
+
+
+    # Stretch Goals -------------------------------------------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self):
-        pass
+        # same order as dft_print 
+        # prints as each node starting from left or right but 
+        # goes to the depth of the direction it started
+        print(self.value)
+
+        if self.left:
+            self.left.pre_order_dft()
+        if self.right:
+            self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+        # print tree in reversal starting from the last leaf and going up
+        # go up in levels while printing
+        # calling the function first they all stack from left to right
+        # as the function return it prints the value
+
+        if self.left:
+            self.left.post_order_dft()
+        if self.right:
+            self.right.post_order_dft()
+
+        print(self.value)
+        
 
     def in_order_dft(self):
+        # if there is a node less than visit
+        if self.left:
+            self.left.in_order_print()
+
+        # if no left print or function has returned from 
+        print(self.value)
+        
+        # if 
+        if self.right:
+            self.right.in_order_print()
+
         pass
 
 """
@@ -148,15 +245,17 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
+print("in order")
 bst.in_order_print()
+print("BFT")
+bst.bft_print()
+print("DFT")
+bst.dft_print()
 
-# bst.bft_print()
-# bst.dft_print()
-
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
-# print("in order")
-# bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()  
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
+print("in order")
+bst.in_order_dft()
+print("post order")
+bst.post_order_dft()  
